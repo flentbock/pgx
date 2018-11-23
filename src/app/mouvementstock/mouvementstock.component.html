@@ -1,0 +1,22 @@
+<br />
+<h2>Listes des mouvements de stock</h2>
+<h3></h3>
+<div class="padding20">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="pageMouvementstock?._embedded.mouvementStocks">
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef type="date">Date</th>
+                <td mat-cell *matCellDef="let f">{{ f.date }}</td>
+            </ng-container>
+            <ng-container matColumnDef="quantite">
+                <th mat-header-cell *matHeaderCellDef>Qauntité</th>
+                <td mat-cell *matCellDef="let f">{{ f.quantite }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <!--tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr-->
+        </table>
+
+        <!--mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator-->
+    </div>
+</div>
