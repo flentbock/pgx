@@ -1,13 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Produit} from '../model/model.produit';
-import {Contact} from '../model/model.contact';
-
 
 @Injectable()
 export class ProduitsService {
   private host = 'http://localhost:8181';
-  private urlProduits = this.host + '/produits';
+  private urldefault = this.host + '/produits';
   private url = null;
   private jwtToken = null;
   private roles: Array<any>;
@@ -19,22 +17,29 @@ export class ProduitsService {
     this.jwtToken = localStorage.getItem('token');
   }
 
-  getProduits(motCle: string, page: number, size: number) {
+  getProduitsAll() {
+    this.url = this.host + '/produits';
+    console.log('getProduitsAll: ' + this.url + 'token memoire :' + this.jwtToken + 'token physique :' + this.loadToken());
+    this.loadToken(); // Le token peut être en mémoire, aller vérifier sa présence physique
+    return this.http.get(this.url, {headers: new HttpHeaders({'Authorization': this.jwtToken})});
+  }
+
+/*  getProduits(motCle: string, page: number, size: number) {
     this.url = this.host + '/produits/chercherProduits?motCle=' + motCle + '&size=' + size + '&page=' + page;
     console.log('getProduits: ' + this.url);
     if (this.jwtToken == null) { this.loadToken(); }
     return this.http.get(this.url, {headers: new HttpHeaders({'Authorization': this.jwtToken})});
-  }
+  }*/
 
   getProduit(id: number) {
-    this.url = this.urlProduits + '/' + id;
+    this.url = this.urldefault + '/' + id;
     console.log('getProduit: ' + this.url);
     if (this.jwtToken == null) { this.loadToken(); }
     return this.http.get(this.url, {headers: new HttpHeaders({'Authorization': this.jwtToken})});
   }
 
   saveProduit(produit: Produit) {
-    this.url = this.urlProduits;
+    this.url = this.urldefault;
     console.log('saveProduit: ' + this.url);
     if (this.jwtToken == null) { this.loadToken(); }
     console.log('Save :' + this.http.post(this.url, produit, {headers: new HttpHeaders({'Authorization': this.jwtToken})}));
@@ -42,7 +47,7 @@ export class ProduitsService {
   }
 
   updateProduit(produit: Produit) {
-    this.url = this.urlProduits + '/' + produit.id;
+    this.url = this.urldefault + '/' + produit.id;
     console.log('updateProduit : ' + this.url);
     if (this.jwtToken == null) { this.loadToken(); }
     console.log('Update :' + this.http.put(this.url, {headers: new HttpHeaders({'Authorization': this.jwtToken})}));

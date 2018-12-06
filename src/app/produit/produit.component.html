@@ -3,15 +3,32 @@
     <div class="panel-heading">Liste des produits</div>
     <div class="panel-body">
       <div class="form-group">
-        <label>Désignation</label>
+        <!--label>Désignation</label>
         <input type="text" [(ngModel)]="motCle" />
-        <button class="btn btn-primary" (click)="doSearch()">Chercher</button>
+        <button class="btn btn-primary" (click)="doSearch()">Chercher</button-->
+        <label for="id_filterCode">Code :
+          <input id="id_filterCode" type="text" [(ngModel)]="filterCode" />
+        </label>
+        <label for="id_filterRefArt">Réf article :
+          <input id="id_filterRefArt" type="text" [(ngModel)]="filterRefArt" />
+        </label>
+        <label for="id_filterRefHeu">Réf heulin :
+          <input id="id_filterRefHeu" type="text" [(ngModel)]="filterRefHeu" />
+        </label>
+        <label for="id_filterDes">Désignation :
+          <input id="id_filterDes" type="text" [(ngModel)]="filterDes" />
+        </label>
+        <label for="id_filterCat">Catégorie :
+          <input id="id_filterCat" type="text" [(ngModel)]="filterCat" />
+        </label>
       </div>
       <table class="table table-striped">
+
         <tr>
           <th>Code</th><th>Réf article</th><th>Réf heulin</th><th>Désignation</th><th>Catégorie</th>
         </tr>
-        <tr *ngFor="let f of pageProduits?.content" >
+        <tr *ngFor="let f of pageProduits?.content | filterSelect : filterCode: filterRefArt: filterRefHeu: filterDes: filterCat"  >
+        <!--tr *ngFor ="let f of pageProduits?.content | fullTextSearch:codeFilter:'code'" -->
           <td> {{f.code}} </td>
           <td> {{f.refarticle}} </td>
           <td> {{f.refheulin}} </td>
@@ -22,13 +39,13 @@
           </td>
         </tr>
       </table>
-      <div class="container">
+      <!--div class="container">
         <ul class="nav nav-pills">
           <li [ngClass]="{active:i==currentPage}" *ngFor="let p of pages; let i=index">
             <a class="clickable" (click)="gotoPage(i)">{{i+1}}</a>
           </li>
         </ul>
-      </div>
+      </div-->
     </div>
   </div>
 </div>

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
         const jwtToken = resp.headers.get('Authorization');
         console.log('mon token :' + resp.headers.get('Authorization'));
         this.authService.saveToken(jwtToken);
-        this.router.navigateByUrl('/tasks');
+        this.router.navigateByUrl('/homeprivate');
       }, err => {
           this.mode = 1;
         console.log(err);

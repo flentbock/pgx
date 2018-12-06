@@ -1,11 +1,15 @@
-<div class="container spacer">
+<!--div class="container spacer">
   <button routerLink="/about" class="btn btn-primary">A propos</button>
   <button routerLink="/contacts" class="btn btn-primary">Contact</button>
   <button routerLink="/produits" class="btn btn-primary">Produits</button>
   <button (click)="onLogout()" class="btn btn-primary">Login</button>
-  <!--button routerLink="/new-produit" class="btn btn-primary">Nouveau Contact</button>
+  <button routerLink="/new-produit" class="btn btn-primary">Nouveau Contact</button>
   <button routerLink="/new-produit-v2" class="btn btn-primary">Nouveau Contact V2</button>
   <button routerLink="/formations" class="btn btn-primary">Formations</button>
-  <button routerLink="/tasks" class="btn btn-primary">Tasks</button-->
-</div>
+  <button routerLink="/tasks" class="btn btn-primary">Tasks</button>
+</div-->
+
+<app-navbarprivate *ngIf='authService.isLogin()' ></app-navbarprivate>
+<app-navbarpublic  *ngIf='!authService.isLogin()' ></app-navbarpublic>
+
 <router-outlet></router-outlet>

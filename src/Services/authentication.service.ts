@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Contact} from '../model/model.contact';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
@@ -11,7 +11,8 @@ export class AuthenticationService {
   private roles: Array<any>;
   private url = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private router: Router) {}
 
   login(user) {
     return this.http.post(this.host + '/login', user, {observe: 'response'});
@@ -30,12 +31,24 @@ export class AuthenticationService {
     this.roles = jwtHelper.decodeToken(this.jwtToken).roles;
   }
 
-  logout() {
-  this.jwtToken = null;
+  onLogin() {
+    console.log('onLogin');
+    if (this.jwtToken != null) {
+      this.router.navigate(['/homeprivate']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  onLogout() {
+    console.log('onLogout');
+    this.jwtToken = null;
     localStorage.removeItem('token');
+    this.router.navigate(['/homepublic']);
   }
 
   isLogin() {
+    console.log((this.jwtToken != null) ? 'isLogin: ' + true : 'isLogin: ' + false);
     if (this.jwtToken != null) { return true; }
     return false;
   }

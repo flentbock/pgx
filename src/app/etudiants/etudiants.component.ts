@@ -22,7 +22,7 @@ export class EtudiantsComponent implements OnInit {
           this.listFormations = data;
         }, err => {
           // Si erreur suppression du Token enregistré dans le localStorage
-          this.authService.logout();
+          this.authService.onLogout();
           this.router.navigateByUrl('/login');
         });
   }
@@ -36,7 +36,7 @@ export class EtudiantsComponent implements OnInit {
       }, err => {
         // Si erreur suppression du Token enregistré dans le localStorage
         console.log(err);
-        this.authService.logout();
+        this.authService.onLogout();
         this.router.navigateByUrl('/login');
       });
   }

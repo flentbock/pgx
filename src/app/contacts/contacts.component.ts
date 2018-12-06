@@ -36,7 +36,7 @@ export class ContactsComponent implements OnInit {
           + ', Mot cle :' + this.motCle + ', CurrentPage : ' +  this.currentPage + ', Size : ' +  this.size);
       }, err => {
         // Si erreur suppression du Token enregistré dans le localStorage
-        this.authService.logout();
+        this.authService.onLogout();
         this.router.navigateByUrl('/login');
         console.log('pageContacts doSearch err :' + err);
       });

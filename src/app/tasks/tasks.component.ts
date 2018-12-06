@@ -16,8 +16,8 @@ export class TasksComponent implements OnInit {
         .subscribe(data => {
           this.tasks = data;
         }, err => {
-          //Si erreur suppression du Token enregistré dans le localStorage
-          this.authService.logout();
+          // Si erreur suppression du Token enregistré dans le localStorage
+          this.authService.onLogout();
           this.router.navigateByUrl('/login');
         });
   }

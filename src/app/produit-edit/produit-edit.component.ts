@@ -28,7 +28,7 @@ export class ProduitEditComponent implements OnInit {
         this.produit = data;
       }, err => {
         // Si erreur suppression du Token enregistré dans le localStorage
-        this.authService.logout();
+        this.authService.onLogout();
         this.router.navigateByUrl('/login');
         console.log('pageProduits doSearch err :' + err);
       });
@@ -41,7 +41,7 @@ export class ProduitEditComponent implements OnInit {
         this.router.navigate(['produits']);
       }, err => {
         // Si erreur suppression du Token enregistré dans le localStorage
-        this.authService.logout();
+        this.authService.onLogout();
         this.router.navigateByUrl('/login');
         console.log('pageContacts doSearch err :' + err);
       });

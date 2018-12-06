@@ -29,7 +29,7 @@ export class EditContactComponent implements OnInit {
         this.contact = data;
       }, err => {
         // Si erreur suppression du Token enregistré dans le localStorage
-        this.authService.logout();
+        this.authService.onLogout();
         this.router.navigateByUrl('/login');
         console.log('pageContacts doSearch err :' + err);
       });
@@ -42,7 +42,7 @@ export class EditContactComponent implements OnInit {
         this.router.navigate(['contacts']);
       }, err => {
         // Si erreur suppression du Token enregistré dans le localStorage
-        this.authService.logout();
+        this.authService.onLogout();
         this.router.navigateByUrl('/login');
         console.log('pageContacts doSearch err :' + err);
       });

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../Services/authentication.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +10,22 @@ import {AuthenticationService} from '../Services/authentication.service';
 })
 export class AppComponent implements OnInit {
   title = 'pgx';
-  isLogin = false;
 
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(private http: HttpClient,
+              public authService: AuthenticationService,
+              private router: Router) {}
 
-  ngOnInit() {
-    this.isLogin = this.authService.isLogin();
-  }
+  ngOnInit() { }
+
 
   onLogout() {
-    this.authService.logout();
-    this.router.navigateByUrl('/login');
+    this.authService.onLogout();
+    console.log('onLogout' + this.authService.isLogin() );
+    this.router.navigateByUrl('/accueil');
   }
 
   onLogin() {
-    this.authService.logout();
+    console.log('onLogout' + this.authService.isLogin() );
     this.router.navigateByUrl('/login');
   }
 }

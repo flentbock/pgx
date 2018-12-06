@@ -6,7 +6,7 @@ import {Contact} from '../model/model.contact';
 @Injectable()
 export class ContactsService {
   private host = 'http://localhost:8181';
-  private urlContacts = this.host + '/contacts';
+  private urldefault = this.host + '/contacts';
   private url = null;
   private jwtToken = null;
   private roles: Array<any>;
@@ -19,7 +19,7 @@ export class ContactsService {
   }
 
   getContact(id: number) {
-    this.url = this.urlContacts + '/' + id;
+    this.url = this.urldefault + '/' + id;
     console.log('URL: ' + this.url);
     if (this.jwtToken == null) { this.loadToken(); }
     return this.http.get(this.url, {headers: new HttpHeaders({'Authorization': this.jwtToken})});
@@ -33,7 +33,7 @@ export class ContactsService {
   }
 
   saveContact(contact: Contact) {
-    this.url = this.urlContacts;
+    this.url = this.urldefault;
     console.log('URL: ' + this.url);
     if (this.jwtToken == null) { this.loadToken(); }
     console.log('Save :' + this.http.post(this.url, contact, {headers: new HttpHeaders({'Authorization': this.jwtToken})}));
@@ -51,7 +51,7 @@ export class ContactsService {
   }
 
   deleteContact(contact: Contact) {
-    this.url = this.urlContacts + '/' + contact.id;
+    this.url = this.urldefault + '/' + contact.id;
     console.log('URL: ' + this.url);
     if (this.jwtToken == null) { this.loadToken(); }
     return this.http.get(this.url, {headers: new HttpHeaders({'Authorization': this.jwtToken})});
