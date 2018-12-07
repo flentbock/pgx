@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   mode = 0;
   constructor(private authService: AuthenticationService, private router: Router ) { }
 

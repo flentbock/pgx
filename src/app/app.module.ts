@@ -27,6 +27,8 @@ import { NavbarprivateComponent } from './components/navbarprivate/navbarprivate
 import { HomepublicComponent } from './homepublic/homepublic.component';
 import { HomeprivateComponent } from './homeprivate/homeprivate.component';
 import { NavbarpublicComponent } from './components/navbarpublic/navbarpublic.component';
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
   const appRoutes: Routes = [
@@ -74,7 +76,9 @@ import { NavbarpublicComponent } from './components/navbarpublic/navbarpublic.co
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ContactsService,
