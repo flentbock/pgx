@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/homeprivate');
       }, err => {
           this.mode = 1;
-        console.log(err);
+        console.log('user : ' + user.username + ' - password : ' + user.password + ' - erreur : ' + err);
       });
   }
 

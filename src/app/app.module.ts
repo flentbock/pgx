@@ -12,7 +12,6 @@ import { FormsModule} from '@angular/forms';
 import { NewContactComponent } from './new-contact/new-contact.component';
 import { NewContactV2Component } from './new-contact-v2/new-contact-v2.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
-import { EtudiantsComponent } from './etudiants/etudiants.component';
 import { LoginComponent } from './login/login.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -29,25 +28,7 @@ import { HomeprivateComponent } from './homeprivate/homeprivate.component';
 import { NavbarpublicComponent } from './components/navbarpublic/navbarpublic.component';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-  const appRoutes: Routes = [
-    {path: 'about', component: AboutComponent},
-    {path: 'contacts', component: ContactsComponent},
-    {path: 'new-contact', component: NewContactComponent},
-    {path: 'new-contact-v2', component: NewContactV2Component},
-    {path: 'edit-contact/:id', component: EditContactComponent},
-    {path: 'formations', component: EtudiantsComponent},
-    {path: 'tasks', component: TasksComponent},
-    {path: 'tasks', component: NewTaskComponent},
-    {path: 'produits', component: ProduitComponent},
-    {path: 'produit-edit/:id', component: ProduitEditComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'registration', component: RegistrationComponent},
-    {path: 'homepublic', component: HomepublicComponent},
-    {path: 'homeprivate', component: HomeprivateComponent},
-    {path: '', redirectTo: '/homepublic', pathMatch: 'full'}
-  ];
+import {AuthGuard} from '../Services/authentication.guard';
 
 @NgModule({
   declarations: [
@@ -57,7 +38,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NewContactComponent,
     NewContactV2Component,
     EditContactComponent,
-    EtudiantsComponent,
     LoginComponent,
     NewTaskComponent,
     RegistrationComponent,
@@ -74,7 +54,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
     MaterialModule,
@@ -83,8 +62,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [
     ContactsService,
     ProduitsService,
-    AuthenticationService
+    AuthenticationService,
+    AuthGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent],
 })
 export class AppModule { }

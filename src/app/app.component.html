@@ -9,7 +9,6 @@
   <button routerLink="/tasks" class="btn btn-primary">Tasks</button>
 </div-->
 
-<app-navbarprivate *ngIf='authService.isLogin()' ></app-navbarprivate>
-<app-navbarpublic  *ngIf='!authService.isLogin()' ></app-navbarpublic>
-
+<app-navbarprivate *ngIf="isLog"></app-navbarprivate>
+<app-navbarpublic *ngIf="!isLog"></app-navbarpublic>
 <router-outlet></router-outlet>

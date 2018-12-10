@@ -1,51 +1,51 @@
-<div class="container spacer">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Liste des produits</div>
-    <div class="panel-body">
-      <div class="form-group">
-        <!--label>Désignation</label>
-        <input type="text" [(ngModel)]="motCle" />
-        <button class="btn btn-primary" (click)="doSearch()">Chercher</button-->
-        <label for="id_filterCode">Code :
-          <input id="id_filterCode" type="text" [(ngModel)]="filterCode" />
-        </label>
-        <label for="id_filterRefArt">Réf article :
-          <input id="id_filterRefArt" type="text" [(ngModel)]="filterRefArt" />
-        </label>
-        <label for="id_filterRefHeu">Réf heulin :
-          <input id="id_filterRefHeu" type="text" [(ngModel)]="filterRefHeu" />
-        </label>
-        <label for="id_filterDes">Désignation :
-          <input id="id_filterDes" type="text" [(ngModel)]="filterDes" />
-        </label>
-        <label for="id_filterCat">Catégorie :
-          <input id="id_filterCat" type="text" [(ngModel)]="filterCat" />
-        </label>
-      </div>
-      <table class="table table-striped">
-
-        <tr>
-          <th>Code</th><th>Réf article</th><th>Réf heulin</th><th>Désignation</th><th>Catégorie</th>
-        </tr>
-        <tr *ngFor="let f of pageProduits?.content | filterSelect : filterCode: filterRefArt: filterRefHeu: filterDes: filterCat"  >
-        <!--tr *ngFor ="let f of pageProduits?.content | fullTextSearch:codeFilter:'code'" -->
-          <td> {{f.code}} </td>
-          <td> {{f.refarticle}} </td>
-          <td> {{f.refheulin}} </td>
-          <td> {{f.designation}} </td>
-          <td> {{f.categorie}} </td>
-          <td>
-            <a (click)="onEditProduit(f.id)" class="clickable">Edit</a>
-          </td>
-        </tr>
-      </table>
-      <!--div class="container">
-        <ul class="nav nav-pills">
-          <li [ngClass]="{active:i==currentPage}" *ngFor="let p of pages; let i=index">
-            <a class="clickable" (click)="gotoPage(i)">{{i+1}}</a>
-          </li>
-        </ul>
-      </div-->
-    </div>
+<br>
+<h2 >Listes des produits</h2>
+<div class="padding20">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]= "pageProduits?.content | filterSelect : filterCode: filterRefArt: filterRefHeu: filterDes: filterCat ">
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <input matInput placeholder="Code" [(ngModel)]="filterCode">
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let f"> {{f.code}} </td>
+      </ng-container>
+      <ng-container matColumnDef="refarticle">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <input matInput placeholder="Réf article" type="text" [(ngModel)]="filterRefArt" />
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let f"> {{f.refarticle}} </td>
+      </ng-container>
+      <ng-container matColumnDef="refheulin">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <input matInput placeholder="Réf heulin" type="text" [(ngModel)]="filterRefHeu" />
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let f"> {{f.refheulin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <input matInput placeholder="Désignation" type="text" [(ngModel)]="filterDes" />
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let f"> {{f.designation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="categorie">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <input matInput placeholder="Catégorie" type="text" [(ngModel)]="filterCat" />
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let f"> {{f.categorie}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <!--mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator-->
   </div>
 </div>

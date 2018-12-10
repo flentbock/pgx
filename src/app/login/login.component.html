@@ -1,19 +1,22 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="drag-and-drop" cdkDrag>
+  <div class="col-md-6 col-md-offset-3">
   <div class="alert alert-danger" *ngIf="mode==1" (ngSubmit)="onLogin(f.value)">
     <strong>Identifiant ou mot de passe invalide</strong>
   </div>
   <br/>
   <form #f="ngForm" (ngSubmit)="onLogin(f.value)" class='container-colonne'>
+    <h3 class="item animated lightSpeedIn">Connexion à votre espace privé</h3>
     <mat-form-field >
-      <input name="username" required matInput placeholder="Enter votre identifiant">
+      <input matInput placeholder="Enter votre identifiant" ngModel="" type="text" name="username" required>
     </mat-form-field>
     <mat-form-field>
-      <input  name="password" required matInput placeholder="Enter votre mot de passe" [type]="hide ? 'password' : 'text'">
+      <input  matInput placeholder="Enter votre mot de passe"  ngModel="" [type]="hide ? 'password' : 'text'" name="password" required>
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
     <button type="submit" class="btn btn-danger" mat-raised-button>Login</button>
     <!--button (click)="onRegister()" type="submit" class="btn btn-success">register</button-->
   </form>
+</div>
 </div>
 
 

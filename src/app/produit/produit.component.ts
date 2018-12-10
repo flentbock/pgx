@@ -12,6 +12,13 @@ import {ProduitsService} from '../../Services/Produits.service';
 
 export class ProduitComponent implements OnInit  {
 
+  displayedColumns: string[] = ['code', 'refarticle', 'refheulin', 'designation', 'categorie'];
+  filterCode;
+  filterRefArt;
+  filterRefHeu;
+  filterDes;
+  filterCat;
+
   pageProduits: any;
   // motCle = '';
   // currentPage = 0;
@@ -25,21 +32,6 @@ export class ProduitComponent implements OnInit  {
   ngOnInit() {
     this.doSearch();
    }
-
-/*  doSearch() {
-    this.produitsService.getProduits(this.motCle, this.currentPage, this.size)
-      .subscribe(data => {
-        this.pageProduits = data;
-        this.pages = new Array(data.totalPages);
-        console.log('pageProduits doSearch :' + this.pageProduits
-          + ', Mot cle :' + this.motCle + ', CurrentPage : ' +  this.currentPage + ', Size : ' +  this.size);
-      }, err => {
-        // Si erreur suppression du Token enregistré dans le localStorage
-        this.authService.onLogout();
-        this.router.navigateByUrl('/login');
-        console.log('pageProduits doSearch err :' + err);
-      });
-  }*/
 
   doSearch() {
     this.produitsService.getProduitsAll()

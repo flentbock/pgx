@@ -10,6 +10,7 @@ export class User {
   telephonenumber = '';
   job = '';
   avatar = '';
+  description = '';
   activateaccount: true;
 
   constructor() {}
