@@ -1,0 +1,45 @@
+<div class="container spacer">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Détails du compte utilisateur</div>
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <label class="control-label">Photo</label>
+          <input class="form-control" type="text" [(ngModel)]="user.avatar">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Identifiant</label>
+          <input class="form-control" type="text" [(ngModel)]="user.username">
+        </div>
+          <label class="control-label">Nom</label>
+          <input class="form-control" type="text" [(ngModel)]="user.firstname">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Prénom</label>
+          <input class="form-control" type="text" [(ngModel)]="user.lastname">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Email</label>
+          <input class="form-control" type="text" [(ngModel)]="user.email">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Date de naissance</label>
+          <input class="form-control" type="date" [(ngModel)]="user.birthdate">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Téléphone</label>
+          <input class="form-control" type="text" [(ngModel)]="user.telephonenumber">
+        </div>
+      <div class="form-group">
+        <label class="control-label">Poste</label>
+        <input class="form-control" type="text" [(ngModel)]="user.job">
+      </div>
+      <div class="form-group">
+        <label class="control-label">Description</label>
+        <input class="form-control" type="text" [(ngModel)]="user.description">
+      </div>
+      <button class="btn btn-primary" (click)="updateUser()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
