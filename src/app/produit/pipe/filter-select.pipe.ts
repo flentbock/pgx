@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {and} from '@angular/router/src/utils/collection';
-/*//import * as _ from 'lodash';*/
+
 @Pipe({
   name: 'filterSelect',
   pure: true,
@@ -27,8 +26,6 @@ export class FilterSelectPipe implements PipeTransform {
                                 && p.designation.includes(filterDes)
                                 && p.categorie.includes(filterCat));
     }
-
-    /*console.log(listData);*/
     return listData;
   }
 

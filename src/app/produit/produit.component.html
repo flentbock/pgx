@@ -2,7 +2,7 @@
 <h2 >Listes des produits</h2>
 <div class="padding20">
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]= "pageProduits?.content | filterSelect : filterCode: filterRefArt: filterRefHeu: filterDes: filterCat ">
+    <table mat-table [dataSource]= "pageProduits?.valueOf() | filterSelect : filterCode: filterRefArt: filterRefHeu: filterDes: filterCat ">
       <ng-container matColumnDef="code">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
@@ -43,9 +43,29 @@
         </th>
         <td mat-cell *matCellDef="let f"> {{f.categorie}} </td>
       </ng-container>
+      <ng-container matColumnDef="quantite">
+        <th mat-header-cell *matHeaderCellDef>quantite en stock</th>
+        <td mat-cell *matCellDef="let f"> {{f.quantite}} </td>
+      </ng-container>
+      <ng-container matColumnDef="edit" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let f">
+        <button mat-icon-button (click)="onEditProduit(f.id)">
+          <mat-icon >edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+      <ng-container matColumnDef="details" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let f">
+          <button mat-icon-button (click)="onEditMouvementstock(f.id)">
+            <mat-icon >details</mat-icon>
+          </button>
+        </td>
+      </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <!--mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator-->
+    <!--mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator-->
   </div>
 </div>

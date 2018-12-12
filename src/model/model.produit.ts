@@ -6,7 +6,8 @@ export class Produit {
   refheulin = '';
   designation = '';
   categorie = '';
-  // Collection<MouvementStock> mouvementsStock;
+  quantite = '';
+  MouvementStock = [];
 
   constructor() {
   }

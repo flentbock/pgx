@@ -14,6 +14,7 @@ import {RegistrationComponent} from './registration/registration.component';
 import {HomepublicComponent} from './homepublic/homepublic.component';
 import {HomeprivateComponent} from './homeprivate/homeprivate.component';
 import {AuthGuard} from '../Services/authentication.guard';
+import {MouvementstockComponent} from './mouvementstock/mouvementstock.component';
 
 const routes: Routes = [
   {path: 'about', component: AboutComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'homepublic', component: HomepublicComponent},
   {path: 'homeprivate', component: HomeprivateComponent, canActivate: [AuthGuard] },
+  {path: 'mouvementstock/:id', component: MouvementstockComponent, canActivate: [AuthGuard] },
   {path: '', component: HomepublicComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: ''}
   // {path: '', redirectTo: '/homepublic', pathMatch: 'full'}

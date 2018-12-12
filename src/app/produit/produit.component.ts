@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from '../../Services/authentication.service';
 import {Router} from '@angular/router';
 import {ProduitsService} from '../../Services/Produits.service';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-produit',
@@ -12,7 +13,7 @@ import {ProduitsService} from '../../Services/Produits.service';
 
 export class ProduitComponent implements OnInit  {
 
-  displayedColumns: string[] = ['code', 'refarticle', 'refheulin', 'designation', 'categorie'];
+  displayedColumns: string[] = ['code', 'refarticle', 'refheulin', 'designation', 'categorie', 'quantite', 'edit', 'details'];
   filterCode;
   filterRefArt;
   filterRefHeu;
@@ -20,14 +21,12 @@ export class ProduitComponent implements OnInit  {
   filterCat;
 
   pageProduits: any;
-  // motCle = '';
-  // currentPage = 0;
-  // size = 2147483647;
 
   constructor(private http: HttpClient,
               public authService: AuthenticationService,
               private router: Router,
-              private produitsService: ProduitsService) { }
+              private produitsService: ProduitsService,
+              private store: Store<any>) { }
 
   ngOnInit() {
     this.doSearch();
@@ -46,6 +45,13 @@ export class ProduitComponent implements OnInit  {
       });
   }
 
+  doSearchNgrx() {
+    // @ts-ignore
+    this.store.dispatch('GETPRODUITSALL', this.doSearch());
+
+  }
+
+
   gotoPage(i: number) {
     // this.currentPage = i;
     this.doSearch();
@@ -53,6 +59,10 @@ export class ProduitComponent implements OnInit  {
 
   onEditProduit(id: number) {
     this.router.navigate(['produit-edit', id]);
+  }
+
+  onEditMouvementstock(id: number) {
+    this.router.navigate(['mouvementstock', id]);
   }
 
 }

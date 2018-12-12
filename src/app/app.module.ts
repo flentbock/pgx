@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ContactsService} from '../Services/Contacts.service';
@@ -28,7 +27,12 @@ import { HomeprivateComponent } from './homeprivate/homeprivate.component';
 import { NavbarpublicComponent } from './components/navbarpublic/navbarpublic.component';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthGuard} from '../Services/authentication.guard';
+import { AuthGuard} from '../Services/authentication.guard';
+import { MouvementstockComponent } from './mouvementstock/mouvementstock.component';
+import { MouvementstockService} from '../Services/mouvementstock.service';
+
+import { StoreModule } from '@ngrx/store';
+import {reducer} from '../state/app.reducer';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,8 @@ import {AuthGuard} from '../Services/authentication.guard';
     NavbarprivateComponent,
     HomepublicComponent,
     HomeprivateComponent,
-    NavbarpublicComponent
+    NavbarpublicComponent,
+    MouvementstockComponent
   ],
   imports: [
     BrowserModule,
@@ -57,11 +62,13 @@ import {AuthGuard} from '../Services/authentication.guard';
     HttpClientModule,
     FormsModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({appSate: reducer})
   ],
   providers: [
     ContactsService,
     ProduitsService,
+    MouvementstockService,
     AuthenticationService,
     AuthGuard
   ],

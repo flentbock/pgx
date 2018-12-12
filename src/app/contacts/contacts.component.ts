@@ -31,7 +31,7 @@ export class ContactsComponent implements OnInit {
     this.contactsService.getContacts(this.motCle, this.currentPage, this.size)
       .subscribe(data => {
         this.pageContacts = data;
-        this.pages = new Array(data.totalPages);
+        // this.pages = new Array(data.totalPages);
         console.log('pageContacts doSearch :' + this.pageContacts
           + ', Mot cle :' + this.motCle + ', CurrentPage : ' +  this.currentPage + ', Size : ' +  this.size);
       }, err => {
