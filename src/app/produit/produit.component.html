@@ -1,71 +1,69 @@
-<br>
-<h2 >Listes des produits</h2>
+<br />
+<h2>Listes des produits</h2>
 <div class="padding20">
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]= "pageProduits?.valueOf() | filterSelect : filterCode: filterRefArt: filterRefHeu: filterDes: filterCat ">
-      <ng-container matColumnDef="code">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field>
-            <input matInput placeholder="Code" [(ngModel)]="filterCode">
-          </mat-form-field>
-        </th>
-        <td mat-cell *matCellDef="let f"> {{f.code}} </td>
-      </ng-container>
-      <ng-container matColumnDef="refarticle">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field>
-            <input matInput placeholder="Réf article" type="text" [(ngModel)]="filterRefArt" />
-          </mat-form-field>
-        </th>
-        <td mat-cell *matCellDef="let f"> {{f.refarticle}} </td>
-      </ng-container>
-      <ng-container matColumnDef="refheulin">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field>
-            <input matInput placeholder="Réf heulin" type="text" [(ngModel)]="filterRefHeu" />
-          </mat-form-field>
-        </th>
-        <td mat-cell *matCellDef="let f"> {{f.refheulin}} </td>
-      </ng-container>
-      <ng-container matColumnDef="designation">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field>
-            <input matInput placeholder="Désignation" type="text" [(ngModel)]="filterDes" />
-          </mat-form-field>
-        </th>
-        <td mat-cell *matCellDef="let f"> {{f.designation}} </td>
-      </ng-container>
-      <ng-container matColumnDef="categorie">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field>
-            <input matInput placeholder="Catégorie" type="text" [(ngModel)]="filterCat" />
-          </mat-form-field>
-        </th>
-        <td mat-cell *matCellDef="let f"> {{f.categorie}} </td>
-      </ng-container>
-      <ng-container matColumnDef="quantite">
-        <th mat-header-cell *matHeaderCellDef>quantite en stock</th>
-        <td mat-cell *matCellDef="let f"> {{f.quantite}} </td>
-      </ng-container>
-      <ng-container matColumnDef="edit" stickyEnd>
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let f">
-        <button mat-icon-button (click)="onEditProduit(f.id)">
-          <mat-icon >edit</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-      <ng-container matColumnDef="details" stickyEnd>
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let f">
-          <button mat-icon-button (click)="onEditMouvementstock(f.id)">
-            <mat-icon >details</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <!--mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator-->
-  </div>
+    <div class="mat-elevation-z8">
+        <table
+            mat-table
+            [dataSource]="dataProduit | filterSelect: filterCode:filterRefArt:filterRefHeu:filterDes:filterCat"
+        >
+            <ng-container matColumnDef="code">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-form-field> <input matInput placeholder="Code" [(ngModel)]="filterCode" /> </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let f">{{ f.code }}</td>
+            </ng-container>
+            <ng-container matColumnDef="refarticle">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-form-field>
+                        <input matInput placeholder="Réf article" type="text" [(ngModel)]="filterRefArt" />
+                    </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let f">{{ f.refarticle }}</td>
+            </ng-container>
+            <ng-container matColumnDef="refheulin">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-form-field>
+                        <input matInput placeholder="Réf heulin" type="text" [(ngModel)]="filterRefHeu" />
+                    </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let f">{{ f.refheulin }}</td>
+            </ng-container>
+            <ng-container matColumnDef="designation">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-form-field>
+                        <input matInput placeholder="Désignation" type="text" [(ngModel)]="filterDes" />
+                    </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let f">{{ f.designation }}</td>
+            </ng-container>
+            <ng-container matColumnDef="categorie">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-form-field>
+                        <input matInput placeholder="Catégorie" type="text" [(ngModel)]="filterCat" />
+                    </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let f">{{ f.categorie }}</td>
+            </ng-container>
+            <ng-container matColumnDef="quantite">
+                <th mat-header-cell *matHeaderCellDef>quantite en stock</th>
+                <td mat-cell *matCellDef="let f">{{ f.quantite }}</td>
+            </ng-container>
+            <ng-container matColumnDef="edit" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let f">
+                    <button mat-icon-button (click)="onEditProduit(f.id)"><mat-icon>edit</mat-icon></button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="details" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let f">
+                    <button mat-icon-button (click)="onEditMouvementstock(f.id)"><mat-icon>details</mat-icon></button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <!--mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator-->
+    </div>
 </div>

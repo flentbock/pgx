@@ -1,16 +1,15 @@
 export class Contact {
+    id: any;
+    nom = '';
+    prenom = '';
+    email = '';
+    dateNaissance: Date = null;
+    tel = '';
+    photo = '';
 
-  id: any;
-  nom = '';
-  prenom = '';
-  email = '';
-  dateNaissance: Date = null;
-  tel = '';
-  photo = '';
+    constructor() {}
 
-  constructor() {}
-
-/*
+    /*
   constructor(
     public nom: string,
     public prenom: string,

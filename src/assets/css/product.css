@@ -62,10 +62,10 @@
 .product-controls a {
     padding: 0 20px;
     font-size: 17px;
-    color: #E6E6E6;
+    color: #e6e6e6;
 }
 .product-controls a:hover {
-    color: #D3473C !important
+    color: #d3473c !important;
 }
 .product-controls-hidden a {
     color: transparent;
@@ -79,18 +79,19 @@
     background: #f7f7fa;
     cursor: pointer;
 }
-.product-upvote:hover, .product-upvote.product-upvote-upvoted {
+.product-upvote:hover,
+.product-upvote.product-upvote-upvoted {
     color: #5898f1;
     cursor: pointer;
 }
 .product-upvote-upvoted .product-arrow {
     border-bottom-color: #5898f1;
 }
- .product:hover .product-upvote {
-    transform: scale(1.2)
- }
+.product:hover .product-upvote {
+    transform: scale(1.2);
+}
 .product:hover .product-controls-hidden a {
-    color: #E6E6E6;
+    color: #e6e6e6;
 }
 .product-upvote:hover .product-arrow {
     border-bottom: 9px solid #5898f1;

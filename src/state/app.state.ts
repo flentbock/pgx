@@ -1,4 +1,4 @@
 export interface AppState {
-  produit: any;
-  lien: String;
+    produits: any;
+    lien: String;
 }

@@ -1,28 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import {Contact} from '../../model/model.contact';
-import {ContactsService} from '../../Services/Contacts.service';
+import { Contact } from '../../model/model.contact';
+import { ContactsService } from '../../Services/Contacts.service';
 
 @Component({
-  selector: 'app-new-contact',
-  templateUrl: './new-contact.component.html',
-  styleUrls: ['./new-contact.component.css']
+    selector: 'app-new-contact',
+    templateUrl: './new-contact.component.html',
+    styleUrls: ['./new-contact.component.css']
 })
 export class NewContactComponent implements OnInit {
+    contact: Contact = new Contact();
 
-  contact: Contact = new Contact();
+    constructor(public contactService: ContactsService) {}
 
-  constructor(public contactService: ContactsService) { }
+    ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  saveContact() {
-    this.contactService.saveContact(this.contact)
-    .subscribe(data => {
-      console.log(data);
-    }, err => {
-      console.log(err);
-    });
-  }
-
+    saveContact() {
+        this.contactService.saveContact(this.contact).subscribe(
+            data => {
+                console.log(data);
+            },
+            err => {
+                console.log(err);
+            }
+        );
+    }
 }

@@ -1,21 +1,20 @@
 export class User {
+    id: any;
+    username = '';
+    password = '';
+    firstname = '';
+    lastname = '';
+    birthdate: Date = null;
+    email = '';
+    telephonenumber = '';
+    job = '';
+    avatar = '';
+    description = '';
+    activateaccount: true;
 
-  id: any;
-  username = '';
-  password = '';
-  firstname = '';
-  lastname = '';
-  birthdate: Date = null;
-  email = '';
-  telephonenumber = '';
-  job = '';
-  avatar = '';
-  description = '';
-  activateaccount: true;
+    constructor() {}
 
-  constructor() {}
-
-  /*
+    /*
     constructor(
       public nom: string,
       public prenom: string,
