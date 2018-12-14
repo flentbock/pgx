@@ -1,34 +1,34 @@
 <div class="container spacer">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Modifier contact</div>
-    <div class="panel-body">
-      <div>
-        <div class="form-group">
-          <label class="control-label">Nom</label>
-          <input class="form-control" type="text" [(ngModel)]="contact.nom">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Modifier contact</div>
+        <div class="panel-body">
+            <div>
+                <div class="form-group">
+                    <label class="control-label">Nom</label>
+                    <input class="form-control" type="text" [(ngModel)]="contact.nom" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Prénom</label>
+                    <input class="form-control" type="text" [(ngModel)]="contact.prenom" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input class="form-control" type="text" [(ngModel)]="contact.email" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Date de naissance</label>
+                    <input class="form-control" type="date" [(ngModel)]="contact.dateNaissance" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Téléphone</label>
+                    <input class="form-control" type="text" [(ngModel)]="contact.tel" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Photo</label>
+                    <input class="form-control" type="text" [(ngModel)]="contact.photo" />
+                </div>
+                <button class="btn btn-primary" (click)="updateContact()">Enregistrer</button>
+            </div>
         </div>
-        <div class="form-group">
-          <label class="control-label">Prénom</label>
-          <input class="form-control" type="text" [(ngModel)]="contact.prenom">
-        </div>
-        <div class="form-group">
-          <label class="control-label">Email</label>
-          <input class="form-control" type="text" [(ngModel)]="contact.email">
-        </div>
-        <div class="form-group">
-          <label class="control-label">Date de naissance</label>
-          <input class="form-control" type="date" [(ngModel)]="contact.dateNaissance">
-        </div>
-        <div class="form-group">
-          <label class="control-label">Téléphone</label>
-          <input class="form-control" type="text" [(ngModel)]="contact.tel">
-        </div>
-        <div class="form-group">
-          <label class="control-label">Photo</label>
-          <input class="form-control" type="text" [(ngModel)]="contact.photo">
-        </div>
-        <button class="btn btn-primary" (click)="updateContact()">Enregistrer</button>
-      </div>
     </div>
-  </div>
 </div>
