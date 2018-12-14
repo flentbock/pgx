@@ -6,7 +6,9 @@
         "s": "ng serve",
         "start": "ng serve -o",
         "build": "ng build",
-        "test": "ng test",
+        "test": "ng test --code-coverage",
+        "test:cover": "rm -rf ./coverage && ng test --no-watch --code-coverage",
+        "coveralls": "eal ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "pretty-quick": "pretty-quick",
@@ -17,12 +19,14 @@
         "commitlint": "commitlint -e",
         "cc": "npm run prettier && npm run lint",
         "prettier": "prettier --write src/**/*{ts,css,md}"
+
+
     },
     "husky": {
         "hooks": {
             "pre-commit": "npm run lint",
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-            }
+        }
     },
     "private": true,
     "dependencies": {
@@ -62,6 +66,7 @@
         "@types/node": "~10.12.12",
         "angular-ide": "^0.9.52",
         "codelyzer": "~4.5.0",
+        "coveralls": "^3.0.2",
         "husky": "^1.2.0",
         "jasmine": "^3.3.1",
         "jasmine-core": "~3.3.0",
