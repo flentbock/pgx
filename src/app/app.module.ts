@@ -5,18 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppStoreModule } from './user-edit/app-store.module';
 
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
 import { AboutComponent } from './about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactsService } from '../Services/Contacts.service';
 import { FormsModule } from '@angular/forms';
-import { NewContactComponent } from './new-contact/new-contact.component';
-import { NewContactV2Component } from './new-contact-v2/new-contact-v2.component';
-import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { LoginComponent } from './login/login.component';
-import { NewTaskComponent } from './new-task/new-task.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { TasksComponent } from './tasks/tasks.component';
 import { AuthenticationService } from '../Services/authentication.service';
 import { ProduitComponent } from './produit/produit.component';
 import { ProduitsService } from '../Services/Produits.service';
@@ -36,15 +30,9 @@ import { MouvementstockService } from '../Services/mouvementstock.service';
 @NgModule({
     declarations: [
         AppComponent,
-        ContactsComponent,
         AboutComponent,
-        NewContactComponent,
-        NewContactV2Component,
-        EditContactComponent,
         LoginComponent,
-        NewTaskComponent,
         RegistrationComponent,
-        TasksComponent,
         ProduitComponent,
         ProduitEditComponent,
         UserEditComponent,
