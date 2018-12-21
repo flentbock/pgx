@@ -14,8 +14,11 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {}
 
-    onLogin(user) {
-        this.authService.login(user).subscribe(
+    onLogin(f) {
+        console.log('username :' + f.username, 'password :' + f.password);
+        console.log('login user : ' + f.username);
+        console.log('login password : ' + f.password);
+        this.authService.login(f).subscribe(
             resp => {
                 const jwtToken = resp.headers.get('Authorization');
                 console.log('mon token :' + resp.headers.get('Authorization'));
@@ -24,7 +27,7 @@ export class LoginComponent implements OnInit {
             },
             err => {
                 this.mode = 1;
-                console.log('user : ' + user.username + ' - password : ' + user.password + ' - erreur : ' + err);
+                console.log('user : ' + f.username + ' - password : ' + f.password + ' - erreur : ' + err);
             }
         );
     }
