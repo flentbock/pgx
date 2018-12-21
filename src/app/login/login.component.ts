@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
     ngOnInit() {}
 
     onLogin(f) {
-        console.log("username :"+f.username,"password :"+f.password);
-        console.log("login user : " + f.username);
-        console.log("login password : " + f.password);
+        console.log('username :' + f.username, 'password :' + f.password);
+        console.log('login user : ' + f.username);
+        console.log('login password : ' + f.password);
         this.authService.login(f).subscribe(
             resp => {
                 const jwtToken = resp.headers.get('Authorization');
