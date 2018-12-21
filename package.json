@@ -8,7 +8,7 @@
         "build": "ng build",
         "test": "ng test --code-coverage",
         "test:cover": "rd coverage /S /Q && ng test --no-watch --code-coverage",
-        "coveralls": "eal ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+        "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "pretty-quick": "pretty-quick",
